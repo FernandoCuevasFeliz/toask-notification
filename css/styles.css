@@ -1,0 +1,143 @@
+:root {
+  /* colors */
+  --sucess: #2ecc71;
+  --info: #3498db;
+  --warning: #f1c40f;
+  --danger: #e74c3c;
+  --gray: #ecf0f1;
+  --black: #2f3640;
+  --black-light: rgba(47, 54, 64, 0.7);
+  --white: #ffffff;
+
+  /* font */
+  --base: 16px;
+
+  /* paddins and margins */
+  --s-1: 0.5em;
+  --s-2: 0.75em;
+  --s-3: 1em;
+  --s-4: 1.25em;
+  --s-5: 1.5em;
+  --s-6: 2em;
+  /* others */
+  --b-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+  --b-radius: var(--s-1);
+}
+
+*,
+*::after,
+*::before {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+body {
+  color: var(--black);
+  font-family: 'Poppins', sans-serif;
+  font-size: var(--base);
+  background-color: var(--gray);
+
+  overflow: hidden;
+}
+
+.toast-container {
+  height: 100vh;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  position: relative;
+}
+
+.toast {
+  width: 400px;
+  overflow: hidden;
+
+  padding: var(--s-3) var(--s-6) var(--s-3) var(--s-4);
+
+  border-left: 5px solid var(--info);
+  border-radius: var(--b-radius);
+  box-shadow: var(--b-shadow);
+
+  background-color: var(--white);
+
+  display: flex;
+  align-items: center;
+
+  position: absolute;
+  top: 75px;
+  right: -100%;
+  z-index: 10000;
+
+  transition: right 300ms linear;
+}
+.toast--active {
+  right: 25px;
+}
+
+.toast--active::before {
+  width: 100%;
+  height: 3px;
+  content: '';
+  background-color: var(--info);
+
+  position: absolute;
+  right: 0;
+  bottom: 0;
+
+  border-radius: var(--b-radius);
+
+  animation: progress 5s linear;
+}
+
+.toast__icon {
+  padding: var(--s-1);
+  margin-right: var(--s-2);
+
+  border-radius: 50%;
+
+  color: var(--white);
+  background-color: var(--info);
+}
+
+.toast__icon-btn {
+  position: absolute;
+
+  top: 0.5em;
+  right: 0.75em;
+
+  cursor: pointer;
+}
+
+.toast__title,
+.toast__msg {
+  display: block;
+}
+
+.toast__title {
+  font-weight: 600;
+}
+.toast__msg {
+  color: var(--black-light);
+}
+
+.toast__btn {
+  padding: var(--s-2) var(--s-3);
+
+  border-radius: var(--b-radius);
+  border: none;
+
+  color: var(--white);
+  font-weight: 700;
+  background-color: var(--info);
+
+  cursor: pointer;
+}
+
+@keyframes progress {
+  100% {
+    right: 100%;
+  }
+}
